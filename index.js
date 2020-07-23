@@ -3,12 +3,12 @@ const client = new Discord.Client();
 const token = process.argv.length == 2 ? process.env.token : "";
 const welcomeChannelName = "general";
 const byeChannelName = "general";
-const welcomeChannelComment = "안녕 난 abcd봇이야 궁금한게 있으면 embed2를 쳐 알았지.";
+const welcomeChannelComment = "안녕 난 abcd봇이야 궁금한게 있으면 help를 쳐 알았지.";
 const byeChannelComment = "유저 삭제 완료";
 
 client.on('ready', () => {
   console.log('online start');
-  client.user.setPresence({ game: { name: '!help를 쳐보세요.' }, status: 'online' })
+  client.user.setPresence({ game: { name: '!help를 쳐보세요.' }, status: 'Idle' })
 });
 
 client.on("guildMemberAdd", (member) => {
@@ -18,7 +18,7 @@ client.on("guildMemberAdd", (member) => {
 
   welcomeChannel.send(`<@${newUser.id}> ${welcomeChannelComment}\n`);
 
-  member.addRole(guild.roles.find(role => role.name == "게스트"));
+  member.addRole(guild.roles.find(role => role.name == "user"));
 });
 
 client.on("guildMemberRemove", (member) => {
@@ -59,7 +59,7 @@ client.on('message', (message) => {
     let commandList = [
       {name: 'test', desc: '봇 작동 여부'},
       {name: 'embed', desc: 'embed 예제1'},
-      {name: 'embed2', desc: 'embed 예제2 (help)'},
+      {name: 'help', desc: 'embed 예제2 (help)'},
       {name: '!전체공지', desc: 'dm으로 전체 공지 보내기'},
       {name: '!청소', desc: '텍스트 지움'},
     ];
