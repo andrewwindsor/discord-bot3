@@ -37,7 +37,7 @@ client.on('message', (message) => {
   }
 
   if(message.content == 'embed') {
-    let img = 'https://cdn.discordapp.com/icons/419671192857739264/6dccc22df4cb0051b50548627f36c09b.webp?size=256';
+    let img = 'https://cdn.discordapp.com/attachments/598387981442875404/735829410715926599/b.png';
     let embed = new Discord.RichEmbed()
       .setTitle('타이틀')
       .setURL('http://www.naver.com')
@@ -55,7 +55,7 @@ client.on('message', (message) => {
 
     message.channel.send(embed)
   } else if(message.content == 'help') {
-    let helpImg = 'https://cdn.discordapp.com/attachments/598387981442875404/734256491602903100/b.png';
+    let helpImg = 'https://images-ext-1.discordapp.net/external/RyofVqSAVAi0H9-1yK6M8NGy2grU5TWZkLadG-rwqk0/https/i.imgur.com/EZRAPxR.png';
     let commandList = [
       {name: 'test', desc: '봇 작동 여부'},
       {name: 'embed', desc: 'embed 예제1'},
