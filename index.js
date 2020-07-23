@@ -8,7 +8,7 @@ const byeChannelComment = "유저 삭제 완료";
 
 client.on('ready', () => {
   console.log('online start');
-  client.user.setPresence({ game: { name: '!help를 쳐보세요.' }, status: 'Idle' })
+  client.user.setPresence({ game: { name: '명령어 실행중.' }, status: 'online' })
 });
 
 client.on("guildMemberAdd", (member) => {
