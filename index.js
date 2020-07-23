@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
-const token = process.argv.length == 2 ? process.env.token : '';
+const token = process.argv.length == 2 ? process.env.token : "";
 const welcomeChannelName = "general";
 const byeChannelName = "general";
 const welcomeChannelComment = "안녕 난 abcd봇이야 궁금한게 있으면 embed2를 쳐 알았지.";
@@ -8,6 +8,7 @@ const byeChannelComment = "유저 삭제 완료";
 
 client.on('ready', () => {
   console.log('online start');
+  client.user.setPresence({ game: { name: '!help를 쳐보세요.' }, status: 'online' })
 });
 
 client.on("guildMemberAdd", (member) => {
@@ -17,7 +18,7 @@ client.on("guildMemberAdd", (member) => {
 
   welcomeChannel.send(`<@${newUser.id}> ${welcomeChannelComment}\n`);
 
-  member.addRole(guild.roles.find(role => role.name == "user"));
+  member.addRole(guild.roles.find(role => role.name == "게스트"));
 });
 
 client.on("guildMemberRemove", (member) => {
@@ -36,7 +37,7 @@ client.on('message', (message) => {
   }
 
   if(message.content == 'embed') {
-    let img = 'https://cdn.discordapp.com/attachments/598387981442875404/734256491602903100/b.png';
+    let img = 'https://cdn.discordapp.com/icons/419671192857739264/6dccc22df4cb0051b50548627f36c09b.webp?size=256';
     let embed = new Discord.RichEmbed()
       .setTitle('타이틀')
       .setURL('http://www.naver.com')
@@ -53,14 +54,14 @@ client.on('message', (message) => {
       .setFooter('abcd', img)
 
     message.channel.send(embed)
-  } else if(message.content == 'embed2') {
-    let helpImg = 'https://images-ext-1.discordapp.net/external/RyofVqSAVAi0H9-1yK6M8NGy2grU5TWZkLadG-rwqk0/https/i.imgur.com/EZRAPxR.png';
+  } else if(message.content == 'help') {
+    let helpImg = 'https://cdn.discordapp.com/attachments/598387981442875404/734256491602903100/b.png';
     let commandList = [
       {name: 'test', desc: '봇 작동 여부'},
       {name: 'embed', desc: 'embed 예제1'},
       {name: 'embed2', desc: 'embed 예제2 (help)'},
-      {name: '!전체공지', desc: 'dm으로 전체 공지 보내기 (관리자권한 필요)'},
-      {name: '!청소', desc: '채팅청소 (관리자권한 필요)'},
+      {name: '!전체공지', desc: 'dm으로 전체 공지 보내기'},
+      {name: '!청소', desc: '텍스트 지움'},
     ];
     let commandStr = '';
     let embed = new Discord.RichEmbed()
@@ -102,7 +103,7 @@ client.on('message', (message) => {
     if(isNum && (clearLine <= 0 || 100 < clearLine)) {
       message.channel.send("1부터 100까지의 숫자만 입력해주세요.")
       return;
-    } else if(!isNum) { // c @andrewwindsor 3
+    } else if(!isNum) { // c @abcd 3
       if(message.content.split('<@').length == 2) {
         if(isNaN(message.content.split(' ')[2])) return;
 
